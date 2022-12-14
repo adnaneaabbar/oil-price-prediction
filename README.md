@@ -10,3 +10,6 @@ We will have many containers responsible for different tasks and pipelines:
 2. Model Training (Different time steps for each training)
 3. Inference to test the models on new data points
 
+## Data Source
+[Data](https://fred.stlouisfed.org/series/DCOILBRENTEU#0)
+
