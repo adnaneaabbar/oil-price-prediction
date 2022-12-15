@@ -1,0 +1,26 @@
+services:
+  pgdb:
+    image: postgres:13
+    container_name: pgdb
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=oil_prices
+    volumes:
+      - ./postgres_data_keep_state:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    volumes:
+      - ./pgadmin_keep_state:/var/lib/pgadmin
+    ports:
+      # my 8080 port was already in use so I mapped it to 8090 instead
+      - "8090:80"
+networks:
+  default:
+    name: data-ingest-network

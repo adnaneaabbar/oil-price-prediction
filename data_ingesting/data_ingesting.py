@@ -37,7 +37,7 @@ def main(params):
     # lines
     df.to_sql(name=table_name, con=engine, if_exists='append')
 
-     while True: 
+    while True: 
         try:
             t_start = time()
             
@@ -59,7 +59,7 @@ def main(params):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Ingesting CSV file to Postgres')
 
-    pparser.add_argument('--user', required=True, help='user name for postgres')
+    parser.add_argument('--user', required=True, help='user name for postgres')
     parser.add_argument('--password', required=True, help='password for postgres')
     parser.add_argument('--host', required=True, help='host for postgres')
     parser.add_argument('--port', required=True, help='port for postgres')
