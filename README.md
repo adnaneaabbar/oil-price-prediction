@@ -6,9 +6,9 @@ We will be using Git and Github for version control, and collaborating with each
 
 ## Docker usage
 We will have many containers responsible for different tasks and pipelines:
-1. Data Preparation for Machine Learning task
-2. Model Training (Different time steps for each training)
-3. Inference to test the models on new data points
+1. Data Fetching
+2. Data Ingestion
+3. Model Training (Different time steps for each training)
 
 ## Data Source
 [Data](https://fred.stlouisfed.org/series/DCOILBRENTEU#0)
@@ -36,3 +36,8 @@ Now we have fetched our CSV file and it's stored in the directory data at the ro
 ```console
 root@id:~$ exit
 ```
+
+### Part 2 : Ingesting data into Postgres
+For this part, the idea is to avoid manually copying datasets from inside the container to the host in order to perform machine learning tasks, so we decided to build a small ETL flow that ingests data into a Postgres database that can be administrated using the pgAdmin software.
+
+To create and run the Postgres db instance and pgAdmin we tried building separate images and running containers separately in the same network, it worked but it was also a chance for us to explore docker-compose which makes running multiple containers easier, we also used volumes to keep the state of last run of the container so we don't lose data after ingestion each time. (Check docker-compose.yaml file for further insights)
