@@ -15,7 +15,7 @@ def main(params):
     print('Data download finished, took %.3f seconds' % (t_end - t_start))
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Download dataset and split it into train and test')
+    parser = argparse.ArgumentParser(description='Fetching dataset with provided url')
 
     parser.add_argument('--url', required=True, help='url of the csv file')
 
