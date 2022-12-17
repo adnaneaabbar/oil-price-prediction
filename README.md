@@ -57,11 +57,11 @@ This will run both containers together in deatched mode in the same network you 
 
 Go to [pgAdmin](http://localhost:8090/) and register a new server to connect to postgres
 
-![pgAdmin Home](https://raw.githubusercontent.com/adnaneaabbar/oil-price-prediction/data_ingesting/data_ingesting/img/pgAdminHome.png?token=GHSAT0AAAAAAB3R477GDSQ53YT44STOZB3MY43NNOQ)
+![pgAdmin Home](data_ingesting/img/pgAdminHome.png)
 
-![Register Server](https://raw.githubusercontent.com/adnaneaabbar/oil-price-prediction/data_ingesting/data_ingesting/img/registerServer.png?token=GHSAT0AAAAAAB3R477HM4CD3QEZMWRFIYXMY43NN2A)
+![Register Server](data_ingesting/img/registerServer.png)
 
-![Empty Table](https://raw.githubusercontent.com/adnaneaabbar/oil-price-prediction/data_ingesting/data_ingesting/img/emptyTable.png?token=GHSAT0AAAAAAB3R477HY7A6C3RFQ7FLFE7SY43NOKA)
+![Empty Table](data_ingesting/img/emptyTable.png)
 
 After that let's run our data ingestion process, make sure you run in the same network as the two previous containers, you can also run a ```docker network ls``` to see the networks created by Docker, in all cases we specified a name for it in the compose file
 
@@ -88,5 +88,5 @@ root@id:~$ docker-compose up -d
 
 Go to [pgAdmin](http://localhost:8090/) once again you should be able to see the following table
 
-![Populated table](https://raw.githubusercontent.com/adnaneaabbar/oil-price-prediction/data_ingesting/data_ingesting/img/populatedTable.png?token=GHSAT0AAAAAAB3R477HUWMUYM4EBRPKXCPMY43NO2A)
+![Populated table](data_ingesting/img/populatedTable.png)
 
