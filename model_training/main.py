@@ -26,7 +26,7 @@ df = df[df["DCOILBRENTEU"] != "."]
 # plt.show()
 
 batch_size = 64
-timesteps = 20
+timesteps = 30
 test_percent = 0.1
 epochs = 120
 
