@@ -26,7 +26,7 @@ df = df[df["DCOILBRENTEU"] != "."]
 # plt.show()
 
 batch_size = 64
-timesteps = 10
+timesteps = 20
 test_percent = 0.1
 epochs = 120
 
@@ -160,4 +160,4 @@ rmse = math.sqrt(mean_squared_error(test_set[timesteps:len(y_test)], y_test[0:le
 print("RMSE : ", rmse)
 
 mae = mean_absolute_error(test_set[timesteps:len(y_test)], y_test[0:len(y_test) - timesteps]) #4.094
-print("MAE : ", mae.numpy()) #2.71
+print("MAE : ", mae.numpy()) #5.067
