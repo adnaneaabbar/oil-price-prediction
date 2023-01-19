@@ -115,7 +115,7 @@ Keras
 ```
 
 Create the Dockerfile:
-```
+```console
 FROM python:3.7.2
 
 WORKDIR /app
