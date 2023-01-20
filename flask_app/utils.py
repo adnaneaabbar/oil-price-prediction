@@ -14,7 +14,7 @@ class Predictions:
             try:
                 self.model = pickle.load(model)
             except OSError:
-                print("Wrog path or model not available")
+                print("Wrong path or model not available")
                 exit(-1)
 
     def predict(self, prev_date: str):
@@ -34,12 +34,6 @@ class Predictions:
 
         pred = self.model.predict(next_date_series)
         return pred
-
-    def get_next_date(self):
-        """
-        Returns the date to be predicted
-        """
-        return self.next_date.strftime("%y-%m-%d")
 
     def plot(self, pred):
         """

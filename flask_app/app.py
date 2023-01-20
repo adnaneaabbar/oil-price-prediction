@@ -1,6 +1,7 @@
 import flask
 from cfg import models as models_list
 from flask import jsonify, render_template, request
+from utils import Predictions
 
 models = models_list.models
 
@@ -18,15 +19,20 @@ def home():
 def predict_price():
     try:
         model_name = request.form.get("model_name")
-        prev_date = request.form.get("date")
+        prev_date = request.form.get("prev_date")
     except KeyError:
         # parse headers in request in case it's another client
         # other than browser where there is no form tag (curl..)
         model_name = request.headers.get("model_name")
-        prev_date = request.headers.get("date")
+        prev_date = request.headers.get("prev_date")
+    model = Predictions(model_name)
+    pred = model.predict(prev_date)
     # render answer as JSON object
     return jsonify(
-        {},
+        {
+            "Day": prev_date,
+            "Predicted Price": list(pred["yhat"]),
+        },
     )
 
 
