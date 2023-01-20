@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oil Price Prediction</title>
+</head>
+<body>
+<h2>Modèles disponibles</h2>
+<form action="{{ url_for('predict_price') }}" method="post">
+        <label for="model_choice">Choisissez un modèle:</label>
+        <select id="model_choice" name="model_name">
+                {% for model in models %}
+                        <option value="{{model}}">{{model}}</option>
+                {% endfor %}
+        </select>
+        <br>
+        <label for="date_pred">Choisissez une date à prédire:</label>
+        <input id="date_pred "type="text" name="prev_date" placeholder="DATE:YYYY-MM-DD">
+        <br>
+        <input type="submit" value="Submit">
+</form>
+</body>
+</html>
