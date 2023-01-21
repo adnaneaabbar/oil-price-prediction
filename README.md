@@ -160,3 +160,56 @@ Results with 10, 20 and 30 timesteps:
 ![20 timesteps](model_training/img/pred_20_ts.png)
 
 ![30 timesteps](model_training/img/pred_30_ts.png)
+
+### Part 4 : Training a time series model and deploying it using Flask and Docker
+The code for training can be found in the train folder alongside the plots
+
+The cfg folder contains the list of models we will train, we start by one which is teh fbprophet.
+
+The models contain the pickled trained models.
+
+The utils file contain a blackbox class that serves to instanciate a loaded model and use it for prediction in flask.
+
+The templates folder contain all rendered templates of flask.
+
+app.py is the file that has all the API routes and backend logic.
+
+We created a requirements file to automate packages installations containing all versions this time:
+```console
+numpy==1.21.5
+Flask==2.1.0
+wheel==0.37.1
+prophet==1.1.2
+scikit-learn==1.0.2
+openpyxl==3.0.10
+pandas==1.4.4
+```
+
+Create the Dockerfile:
+```console
+FROM python:3.9.13
+
+RUN mkdir /app
+WORKDIR /app
+COPY . /app
+
+RUN python -m pip install --upgrade pip setuptools wheel
+RUN python -m pip install -r requirements.txt
+
+CMD ["python", "app.py"]
+```
+
+We create and inspect a volume then use it afterwards for file sharing between container and host.
+```console
+foo@bar:~$ docker volume create share
+foo@bar:~$ docker volume inspect share
+```
+
+We build and run the docker image and mount it:
+```console
+foo@bar:~$ docker build -t flask-app .
+foo@bar:~$ docker run -it --name=flask-app --mount source=share,destination=/app/share flask-app
+```
+
+After this we tagged the image so we can push it to docker hub.
+Link is available in the [report](https://github.com/adnaneaabbar/oil-price-prediction/blob/master/Rapport_Projet_Data_Engineering.pdf).
