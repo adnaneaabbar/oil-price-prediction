@@ -17,14 +17,8 @@ def home():
 
 @app.route("/predict", methods=["POST"])
 def predict_price():
-    try:
-        model_name = request.form.get("model_name")
-        prev_date = request.form.get("prev_date")
-    except KeyError:
-        # parse headers in request in case it's another client
-        # other than browser where there is no form tag (curl..)
-        model_name = request.headers.get("model_name")
-        prev_date = request.headers.get("prev_date")
+    model_name = request.form.get("model_name")
+    prev_date = request.form.get("prev_date")
     model = Predictions(model_name)
     pred = model.predict(prev_date)
     # render answer as JSON object
